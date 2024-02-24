@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic List Manipulation</title>
+    <style>
+        #listContainer {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Dynamic List Manipulation</h2>
+    <div id="listContainer">
+        <input type="text" id="itemInput" placeholder="Enter an item">
+        <button onclick="addItem()">Add Item</button>
+        <button onclick="removeLastItem()">Remove Last Item</button>
+    </div>
+    <ul id="itemList">
+        <!-- List items will be dynamically added here -->
+    </ul>
+
+    <script>
+        function addItem() {
+            // Get the input field value
+            var inputValue = document.getElementById("itemInput").value;
+
+            // If input value is not empty
+            if (inputValue !== "") {
+                // Create a new list item
+                var newItem = document.createElement("li");
+                var textNode = document.createTextNode(inputValue);
+                newItem.appendChild(textNode);
+
+                // Add the new item to the list
+                document.getElementById("itemList").appendChild(newItem);
+
+                // Clear the input field
+                document.getElementById("itemInput").value = "";
+            }
+        }
+
+        function removeLastItem() {
+            var list = document.getElementById("itemList");
+            var lastItem = list.lastElementChild;
+
+            // If there are items to remove
+            if (lastItem) {
+                list.removeChild(lastItem);
+            } else {
+                alert("No items to remove.");
+            }
+        }
+    </script>
+</body>
+</html>
